@@ -4,7 +4,7 @@ ofo/掘金/花呗分期 三个页面练习
 ![](https://github.com/MengZhaoFly/ofo-fenqi-juejin.practice/blob/master/result/juejin.gif)
 ***
 # ofo<br>
-![](https://github.com/MengZhaoFly/ofo-fenqi-juejin.practice/blob/master/result/ofo.png)
+![](https://github.com/MengZhaoFly/ofo-fenqi-juejin.practice/blob/master/result/ofo.gif)
 ***
 # 花呗分期<br>
 ![](https://github.com/MengZhaoFly/ofo-fenqi-juejin.practice/blob/master/result/fenqi.png)
