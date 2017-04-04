@@ -123,14 +123,15 @@
             vertical-align: middle;
             /*margin-left: 10px;*/
         }
+         .main .input button.active{
+            background-color: #ffd500;
+        }
         .main .input .text{
             width:65%;
             height: 60px;
-            outline: none;
-            border: none;
             border: 2px solid #ffd500;
             text-align: center;
-            color: #ffd500;
+            color:black;
             line-height: 60px;
             position: relative;
 
@@ -148,6 +149,7 @@
             animation: focus .7s forwards infinite;
     
         }
+        /*闪烁动作*/
         @keyframes focus{
             from{
                 opacity: 1;
@@ -215,8 +217,8 @@
             </div>
             <p class="money-dec">计费说明：1元/小时</p>
             <div class="input">
-                <div type="text" class="text" id="text" data-content="123"></div>
-                <button class="btn"></button>
+                <div type="text" class="text" id="text" data-content=""></div>
+                <button class="btn " id="submitBtn"></button>
             </div>
             <p class="input-dec">输入车牌号,获取解锁码</p>
 
@@ -225,26 +227,26 @@
            <table width="100%" border="1" cellspacing="0" cellpadding="0">
                <tboby>
                    <tr>
-                       <td>1</td>
-                       <td>2</td>
-                       <td>3</td>
+                       <td class="number">1</td>
+                       <td class="number">2</td>
+                       <td class="number">3</td>
                         <td></td>
                    </tr>
                    <tr>
-                       <td>4</td>
-                       <td>5</td>
-                       <td>6</td>
-                        <td></td>
+                       <td class="number">4</td>
+                       <td class="number">5</td>
+                       <td class="number">6</td>
+                        <td id="del"></td>
                    </tr>
                    <tr>
-                       <td>7</td>
-                       <td>8</td>
-                       <td>9</td>
+                       <td class="number">7</td>
+                       <td class="number">8</td>
+                       <td class="number">9</td>
                        <td rowspan="2">确认</td>
                    </tr>
                    <tr>
                        <td></td>
-                       <td>0</td>
+                       <td class="number">0</td>
                        <td></td>
                         
                    </tr>
@@ -252,9 +254,34 @@
            </table>
     </div>
     <script>
-    const content=document.querySelector('.main .input .text');
-    content.dataset.content='123456';
-    content.setAttribute('data-content','789456');
+    // content.dataset.content='123456';
+    // content.setAttribute('data-content','789456');
+    const content=document.querySelector('.main .input .text'),
+            numbers=document.querySelectorAll('.number'),
+            submitBtn=document.getElementById('submitBtn'),
+            del=document.getElementById('del');
+    let value='';
+    
+    del.addEventListener('click',function(){
+        if(value.length==0) return false;
+        value=value.slice(0,value.length-1);
+         dataSet(value);
+        
+    });
+    function dataSet(value){
+        content.setAttribute('data-content',value);
+        if(value.length>0){
+            submitBtn.classList.add('active');
+        }else{
+             submitBtn.classList.remove('active');
+        }
+    };
+    numbers.forEach(function(element) {
+        element.addEventListener('click',function(){
+            value += this.innerHTML;
+            dataSet(value);
+        })
+    }, this);
     
     </script>
 </body>
