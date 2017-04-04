@@ -68,8 +68,33 @@
             color: #A0A0A0;
         }
         /*加推荐背景*/
-        label.tuijian-bgc.weui-cell{
-            background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAACjklEQVRYR8WXMW/TcBTE7/52EFs7ICQYgG4wAQtrg8TARpgZUgYGBkQ7ISEBZUdq+glIPgHJgMTIzALZGAMDI2Ru7f+hZ8et0zqJHblpJsexc7/33r1zwqsHt4Rze6nH8wNQ78+Fn1tLAwjYIfAOwHr1Bqbidl9lAAH7AEYE2gDuSPhF4np5iGPxZQF2khuBvbQL2gJ4uxzAtHglAKsUROeocmAHUCtCvN1A+H0xwGnxSgC+oQ13iF27SeAPExfQdUATQMsTLSd+KvZEsXhpgInh2pLWI8aPQwSdVJw2hp6ovhP3zBOnOzFbvCzA2EyXGM5m7uKR4qBDYs2qtXOCxg7YPu2F+eJlAZKiJPRJ3Jh4wbbgZdYZg/PQUwd+PO7AYvGZAIK+AhwSakLog7R9z0AGScuBpoRNkgaVwB2PoJz4DAD1ALYlDCJGu+ZwOybVBLgG6T2IFgBzPu3a6bmXFy8EmFQ/iBEfhAieHbjoTeiDS7n2micm6acuQIPJ3h8l3OK1TK84SsK0Sjyyk4eI7jYQdO3Yy3/xxO8Q7p7E9eyaqm6fBZSLYnVhYWOGI8fWASdccwxeWdsPA/+t4YPPgIYCxgQ3qxquCCIPMITzu/Cula6TNiL416HcZQ9dJPnAO/8h8O7h9NyrzfwkRG4EGpmjAXWVbkCS8RH880DuBWBR7P8S7kkdlWffUfg09NR9JxhA4nCDCMUrIN/WKV68BdIoyQDqX37NpKxDiUsqu72ECQt8DewnYTT1uK1PvEQUJ6Fkq7n0ni/Kgwq/iOqtfK4J6wqZRdWXGEG9hlsQREUfn03b80pzPHD24nNGsBrxGQCrEy8AWK34CYDVi+cAzkd8AnCzm/1RLBMcdV/zH4N9kwwdrjg6AAAAAElFTkSuQmCC) no-repeat;
+       
+        label.tuijian-bgc .weui-cell__bd:before{
+            content: '';
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 0;
+            border-top: 12px solid #44C446;
+            border-left: 12px solid #44C446;
+            border-right: 12px solid transparent;
+            border-bottom: 12px solid transparent;
+            color: #fff;
+           
+        }
+        label.tuijian-bgc .weui-cell__bd::after{
+            content: '荐';
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            color: #fff;
+            font-size: 12px;
+        }
+        label.tuijian-bgc{
+            /*background-color: red;*/
         }
         /*去除手续费上边界*/
         .weui-media-box::before{
