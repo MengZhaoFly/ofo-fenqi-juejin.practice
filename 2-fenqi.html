@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>分期</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/weui/1.1.1/style/weui.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+        body{
+            background-color: #f8f8f8;
+        }
+        .page {
+            background-color: #f8f8f8;
+        }
+        
+        .back-btn {
+            width: 25px;
+            padding-right: 10px;
+            margin-right: 15px;
+            display: block;
+            border-right: 1px solid #E0E0E0;
+        }
+        
+        .weui-panel__bd .weui-cell__bd p {
+            color: #303030;
+        }
+        
+        .weui-panel__bd .weui-cell__ft {
+            width: 30px;
+            height: 30px;
+            background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAEJklEQVRoQ+1ZTW7TQBT+nkkpO5xegESquyWcoOkJKCegLJsgEU5Ae4KGRdxl2xMQTtBwAsI2Rkq4QO3uSJr6oXEwsh3bmZlMg5DwKlLG773v/X7zTPjHH/rH7cd/AHEEbdfbtwhNZjQBrhGolowugycATYgwCO8xDN46n01Ef60I2Ode0wr5NYMOiWCrGMSMgMD90KKr4NgZqLybPKsFwO6NGkR0RhDeXv9hYMCEUx0gSgDss7Ftbc8/AOisb3auhG44rZwG7+uBrHxpAJHXgQsiasgK1znHzEMG3gTtvaHM+1IAFsbTtWqeyxiQd0bUB4MPZECsBLBp45OAQuYXq0CUAvibxgsgMpEoBCAKlh7fXT90zq9Ks6gmZlsHRYVdCGCn970L4nerFGzkf6aPN+3d3M6XC0CkjkX0Vcc4Bm6J6TK0uA9UJviJAE/mDTAaxOgQ4ZmO3JBwkDcncgFUXe9aZ0gx4zPPKkdlfXyn552AIGaJ0iOGnd9yDrIvLQHQ9T4DX/yWIzWZddMzLwpLAHbc0SVAr5XcAyCcVqqx56MGsD2/IOAw6iaCKkwrrzL/Twh4qqaHr25ae0elXKja83z1gZUWnO/h9Jlqz+sT4aUKgKitzir1ZIqmIhCxS8a1itDoLOP0pu2ciJ+L9jsfZ52QTTHdWghBr4LWbj+2MQVAV2iywGzX61jA2bIT1o/AwlnplpoCoBPW2FAxcEAU5HUvBn/j6VYzWQPW9txXjvSinlLNIgNg9NX05M0aL4yuut6nuMBVQYibnd/aq+enkOuxqsCy82Iu+G0n6kTxs9MbXYAo1UlUdd60nD+OT9eAQQDM+MGzSiPZMUwYL8BuBEDILC4llyY9H8vaDACq1IPj+iRqrYWdSTV5FucLAVTd0ZBAz/XEpt9KKqm63oCAfRNyRWr6befPysZYG80aFwLvg5bTtc/HNYvnYxPGL2ZmSRvVHWRFxkWzAVRTpyYlcBNTX5wyQyVMuVdCTpaRLrHRquuJaarIEvM081U43ergCWwK511V4pYrEbj1W05qA7hMpw1cJcWtLKno90JMizqkgUjQaRNFJ3Lfb++9SE1gA0NS6kIjlK5D6mKjk8ps9/uhBf4kkeKFR4pufPmXelOtj/mSiWxd4pZEU7TkKlmr6F2+1/FysfsV1yqxIJOTWRdYHh1PyipfLZ6Pa8TzoZm2qg5BdDNmbpbtR+WWu0SCyxiYDfIgZIxfmsRF4n9/kdkYCFnjpQGIg2I+EN/1TbHVQv4k7s+Mo1Vr9fj9lSmUVWSa8KXkM30MZ49OHuQTU1JRFA1D/CamyMzckfW6dBdaVXIR7QjvO0x8pFrk0RZbfGZldHUM106hwkKPvhmjyUADFH3oTt3sRD8Hk9iHDkMLA51Pqnm6lWtgVVQ2/f9/AJv2eFbfL3l6IU8YOQHpAAAAAElFTkSuQmCC) center no-repeat;
+            background-size: cover;
+        }
+        /*提示*/
+        
+        .weui-icon-info-circle {
+            color: #10AEFF;
+        }
+        
+        .weui-media-box__desc {
+            font-size: 12px;
+        }
+        
+        .weui-media-box__desc a {
+            color: #10AEFF;
+        }
+        /*修复label上界限 没有紧靠左边*/
+        
+        .weui-cell:before {
+            left: 0;
+        }
+        /*推荐上界限 不能紧靠左边*/
+        .tuijian.weui-cell:before{
+            left: 15px;
+            border-top: 2px dashed #d9d9d9;
+            
+        }
+        .tuijian.weui-cell .weui-cell__bd p{
+            color: gold;
+        }
+        .tuijian.weui-cell .weui-cell__bd p span{
+            color: #A0A0A0;
+        }
+        /*加推荐背景*/
+        label.tuijian-bgc.weui-cell{
+            background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAACjklEQVRYR8WXMW/TcBTE7/52EFs7ICQYgG4wAQtrg8TARpgZUgYGBkQ7ISEBZUdq+glIPgHJgMTIzALZGAMDI2Ru7f+hZ8et0zqJHblpJsexc7/33r1zwqsHt4Rze6nH8wNQ78+Fn1tLAwjYIfAOwHr1Bqbidl9lAAH7AEYE2gDuSPhF4np5iGPxZQF2khuBvbQL2gJ4uxzAtHglAKsUROeocmAHUCtCvN1A+H0xwGnxSgC+oQ13iF27SeAPExfQdUATQMsTLSd+KvZEsXhpgInh2pLWI8aPQwSdVJw2hp6ovhP3zBOnOzFbvCzA2EyXGM5m7uKR4qBDYs2qtXOCxg7YPu2F+eJlAZKiJPRJ3Jh4wbbgZdYZg/PQUwd+PO7AYvGZAIK+AhwSakLog7R9z0AGScuBpoRNkgaVwB2PoJz4DAD1ALYlDCJGu+ZwOybVBLgG6T2IFgBzPu3a6bmXFy8EmFQ/iBEfhAieHbjoTeiDS7n2micm6acuQIPJ3h8l3OK1TK84SsK0Sjyyk4eI7jYQdO3Yy3/xxO8Q7p7E9eyaqm6fBZSLYnVhYWOGI8fWASdccwxeWdsPA/+t4YPPgIYCxgQ3qxquCCIPMITzu/Cula6TNiL416HcZQ9dJPnAO/8h8O7h9NyrzfwkRG4EGpmjAXWVbkCS8RH880DuBWBR7P8S7kkdlWffUfg09NR9JxhA4nCDCMUrIN/WKV68BdIoyQDqX37NpKxDiUsqu72ECQt8DewnYTT1uK1PvEQUJ6Fkq7n0ni/Kgwq/iOqtfK4J6wqZRdWXGEG9hlsQREUfn03b80pzPHD24nNGsBrxGQCrEy8AWK34CYDVi+cAzkd8AnCzm/1RLBMcdV/zH4N9kwwdrjg6AAAAAElFTkSuQmCC) no-repeat;
+        }
+        /*去除手续费上边界*/
+        .weui-media-box::before{
+            border-top: none;
+        }
+        /*按钮*/
+        .weui-btn{
+            background-color: #10AEFF;
+        }
+        /*按钮下的文字*/
+        .weui-btn-area .weui-media-box__desc{
+            text-align: center;
+            margin-top: 10px;
+            font-size: 14px;
+        }
+        /*按钮 按下的颜色*/
+        .weui-btn_primary:not(.weui-btn_disabled):active {
+    color: hsla(0,0%,100%,.6);
+    background-color: #10AEFF;
+}
+    </style>
+</head>
+
+<body>
+    <div class="page input">
+        <!--头部-->
+        <div class="page__hd">
+            <header>
+                <div class="weui-panel">
+                    <div class="weui-panel__bd">
+                        <div class="weui-media-box weui-media-box_small-appmsg">
+                            <div class="weui-cells">
+                                <a class="weui-cell " href="javascript:;">
+                                    <div class="weui-cell__hd">
+                                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAMAAABg3Am1AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAABU1BMVEUAAAASltsSltsSltsSltsSltsSltsSltsSltsSltsSltsSltsSltsSltsSltsSltsSltsSltsSltsSltsSltsSltsSltsSltsSltsSltsSltsSltsSltsSltsSltsSltsSltsSltsSltsSltsSltsSltsSltsSltsSltsSltsSltsSltsSltsSltsSltsSltsSltsSltsSltsSltsSltsSltsSltsSltsSltsSltsSltsSltsSltsSltsSltsSltsSltsSltsSltsSltsSltsSltsSltsSltsSltsSltsSltsSltsSltsSltsSltsSltsSltsSltsSltsSltsSltsSltsSltsSltsSltsSltsSltsSltsSltsSltsSltsSltsSltsSltsSltsSltsSltsSltsSltsSltsSltsSltsSltsSltsSltsSltsSltsSltsAAADuJ94YAAAAb3RSTlMASgFinQJqqANxmHqWAwCCdgAAi1oBlEECnS0Dp/scBbHRDwe7qwYJxYgBC9BqDttPEeaooRTy1v4U8hHnqKEO208L0GoJxYgBB7urBgWx0Q8Dp/wcAp0tAZRBAItaAIJ2AHqXA3GYaqcDYp0CSgHAaxCbAAAAAWJLR0QAiAUdSAAAAAd0SU1FB+EEAgwHH4UWbpoAAAEQSURBVEjH7dBZVwFAGMbxt31VaVMiCam00IIWSqlQStGifdPOfP873vcqznE8c+PKcznn9z9nZogaq+eamvV8i2pt0/HtSqmOTtx3KV437HvE9xpA3tcvfsAI+sEh8cPodUZGxZtQPzYu3oz6CQtz6yTqbVPs7dOodzjZu2ZQ755lPzePes8C+0WU09Iyey/sfSvsV6tvrdyv+1WNBcqDYC1fGWxsaga0tc2noeoLV756Z5eLCPxLRHv7XEQ1ioNDLo5ieBFPcHF8ghfJUy7OUnhxfsFFOoMXl1fy6dd4cZOV4hYv7u6leMCLxycpnl/w5FWKt3e8yEnxgQf0WfJf3xoB/ajfPx1PlC/o+cb+rwj+C4N7K43XhQAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAxNy0wNC0wMlQxMjowNzozMSswODowMIOrIvIAAAAldEVYdGRhdGU6bW9kaWZ5ADIwMTctMDQtMDJUMTI6MDc6MzErMDg6MDDy9ppOAAAAAElFTkSuQmCC"
+                                            alt="" class="back-btn"></div>
+                                    <div class="weui-cell__bd weui-cell_primary">
+                                        <p>账单分期</p>
+                                    </div>
+                                    <span class="weui-cell__ft"></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+        </div>
+         <!--头部 end-->
+        <div class="page__bd">
+            <!--输入分期金额-->
+            <div class="weui-cells weui-cells_form">
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label class="weui-label">分期金额</label></div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input" type="number" pattern="[0-9]*" placeholder="请输入金额">
+                    </div>
+                    <div class="weui-cell__ft">
+                        <div class="icon-box">
+                            <i class="weui-icon-info-circle"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--输入分期金额 end-->
+            <!--中部描述-->
+            <div class="weui-media-box weui-media-box_text">
+                <p class="weui-media-box__desc">如有分期优惠券，仅限在优惠券限定金额内使用，<a href="">查看优惠券</a></p>
+
+            </div>
+            <!--中部描述 end-->
+            <!--期数单选 start-->
+            <div class="weui-cells weui-cells_form">
+                <div class="weui-cell__hd">
+                    <div class="weui-cells__title">期数 每期应还(元)</div>
+                </div>
+                <div class="weui-cells  weui-cells_checkbox">
+                    <label class="weui-cell weui-check__label tuijian-bgc" for="x11">
+                        <div class="weui-cell__bd">
+                            <p>3期</p>
+                        </div>
+                        <div class="weui-cell__ft">
+                            <input type="radio" class="weui-check" name="radio1" id="x11">
+                            <i class="weui-icon-checked"></i>
+                        </div>
+                        
+                   </label>
+                   <!--推荐 start-->
+                   <a class="weui-cell weui-cell_access js_item tuijian" data-id="actionsheet" href="javascript:;">
+                            <div class="weui-cell__bd">
+                                <p>免一期手续费 <span style="float: right;">可免15.84元</span></p>
+                                
+                            </div>
+                            <div class="weui-cell__ft">
+                                
+                            </div>
+                    </a>
+                    <!--推荐 end-->
+                   
+                    <label class="weui-cell weui-check__label" for="x12">
+                        <div class="weui-cell__bd">
+                            <p>6期</p>
+                        </div>
+                        <div class="weui-cell__ft">
+                            <input type="radio" name="radio1" class="weui-check" id="x12" checked="checked">
+                            <i class="weui-icon-checked"></i>
+                        </div>
+                 </label>
+                    <label class="weui-cell weui-check__label" for="x13">
+                        <div class="weui-cell__bd">
+                            <p>9期</p>
+                        </div>
+                        <div class="weui-cell__ft">
+                            <input type="radio" name="radio1" class="weui-check" id="x13" checked="checked">
+                            <i class="weui-icon-checked"></i>
+                        </div>
+                 </label>
+                    <label class="weui-cell weui-check__label" for="x14">
+                        <div class="weui-cell__bd">
+                            <p>12期</p>
+                        </div>
+                        <div class="weui-cell__ft">
+                            <input type="radio" name="radio1" class="weui-check" id="x14" checked="checked">
+                            <i class="weui-icon-checked"></i>
+                        </div>
+                 </label>
+                </div>
+
+            </div>
+
+            <!--期数单选 end-->
+           <!--手续费-->
+        <div class="weui-media-box weui-media-box_text">
+            <p class="weui-media-box__desc">手续费说明<a href=""><i class="weui-icon-info-circle"></i></a></p>
+        </div>
+         <!--按钮-->
+        <div class="weui-btn-area">
+            <a class="weui-btn weui-btn_primary" href="javascript:" id="showTooltips">申请分期</a>
+            <p class="weui-media-box__desc">分期后05月10日还第一期</p>
+            
+        </div>
+
+
+
+
+
+
+        </div>
+         
+       
+    </div>
+
+</body>
+
+</html>
